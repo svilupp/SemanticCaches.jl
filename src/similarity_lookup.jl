@@ -106,8 +106,9 @@ function (cache::SemanticCache)(
     ## Find the highest and check if it's above the threshold
     output = max_sim >= min_similarity ? cache.items[max_idx].output : nothing
     (verbose >= 1) &&
-        @info (isnothing(output) ? "No cache match found" :
-               "Match found ($(round(max_sim, digits=3)))")
+        @info (isnothing(output) ?
+               "No cache match found (max. sim: $(round(max_sim, digits=3)))" :
+               "Match found (max. sim: $(round(max_sim, digits=3)))")
     ##
     return CachedItem(; input_hash = hash_, embedding, key, output)
 end
