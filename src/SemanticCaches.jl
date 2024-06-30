@@ -17,6 +17,10 @@ include("similarity_lookup.jl")
 function __init__()
     ## Initialize the embedding model
     global EMBEDDER
+    ## If we are in the CI, auto-download
+    if haskey(ENV,"CI")
+        ENV["DATADEPS_ALWAYS_ACCEPT"] = "true"
+    end
     EMBEDDER = EmbedderModel(:tiny_embed)
 end
 
