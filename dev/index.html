@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Home · SemanticCaches.jl</title><meta name="title" content="Home · SemanticCaches.jl"/><meta property="og:title" content="Home · SemanticCaches.jl"/><meta property="twitter:title" content="Home · SemanticCaches.jl"/><meta name="description" content="Documentation for SemanticCaches.jl."/><meta property="og:description" content="Documentation for SemanticCaches.jl."/><meta property="twitter:description" content="Documentation for SemanticCaches.jl."/><meta property="og:url" content="https://svilupp.github.io/SemanticCaches.jl/"/><meta property="twitter:url" content="https://svilupp.github.io/SemanticCaches.jl/"/><link rel="canonical" href="https://svilupp.github.io/SemanticCaches.jl/"/><script data-outdated-warner src="assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="assets/documenter.js"></script><script src="search_index.js"></script><script src="siteinfo.js"></script><script src="../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href>SemanticCaches.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li class="is-active"><a class="tocitem" href>Home</a><ul class="internal"><li><a class="tocitem" href="#Installation"><span>Installation</span></a></li><li><a class="tocitem" href="#Quick-Start-Guide"><span>Quick Start Guide</span></a></li><li><a class="tocitem" href="#How-it-Works"><span>How it Works</span></a></li><li><a class="tocitem" href="#Suitable-Use-Cases"><span>Suitable Use Cases</span></a></li><li><a class="tocitem" href="#Advanced-Usage"><span>Advanced Usage</span></a></li><li><a class="tocitem" href="#Frequently-Asked-Questions"><span>Frequently Asked Questions</span></a></li></ul></li><li><a class="tocitem" href="api_reference/">API Reference</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Home</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Home</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/svilupp/SemanticCaches.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/svilupp/SemanticCaches.jl/blob/main/docs/src/index.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="SemanticCaches"><a class="docs-heading-anchor" href="#SemanticCaches">SemanticCaches</a><a id="SemanticCaches-1"></a><a class="docs-heading-anchor-permalink" href="#SemanticCaches" title="Permalink"></a></h1><p>Documentation for <a href="https://github.com/svilupp/SemanticCaches.jl">SemanticCaches</a>.</p><p>SemanticCaches.jl is a very hacky implementation of a semantic cache for AI applications to save time and money with repeated requests. It&#39;s not particularly fast, because we&#39;re trying to prevent API calls that can take even 20 seconds.</p><p>Note that we&#39;re using a tiny BERT model with a maximum chunk size of 512 tokens to provide fast local embeddings running on a CPU. For longer sentences, we split them in several chunks and consider their average embedding, but use it carefully! The latency can sky rocket and become worse than simply calling the original API.</p><h2 id="Installation"><a class="docs-heading-anchor" href="#Installation">Installation</a><a id="Installation-1"></a><a class="docs-heading-anchor-permalink" href="#Installation" title="Permalink"></a></h2><p>To install SemanticCaches.jl, simply add this repository (package is not yet registered).</p><pre><code class="language-julia hljs">using Pkg
+Pkg.add(&quot;https://github.com/svilupp/SemanticCaches.jl&quot;)</code></pre><h2 id="Quick-Start-Guide"><a class="docs-heading-anchor" href="#Quick-Start-Guide">Quick Start Guide</a><a id="Quick-Start-Guide-1"></a><a class="docs-heading-anchor-permalink" href="#Quick-Start-Guide" title="Permalink"></a></h2><pre><code class="language-julia hljs">ENV[&quot;DATADEPS_ALWAYS_ACCEPT&quot;] = &quot;true&quot;
+using SemanticCaches
+
+sem_cache = SemanticCache()
+# First argument: the key must always match exactly, eg, model, temperature, etc
+# Second argument: the input text to be compared with the cache, can be fuzzy matched
+item = sem_cache(&quot;key1&quot;, &quot;say hi!&quot;; verbose = 1) # notice the verbose flag it can 0,1,2 for different level of detail
+if !isvalid(item)
+    @info &quot;cache miss!&quot;
+    item.output = &quot;expensive result X&quot;
+    # Save the result to the cache for future reference
+    push!(sem_cache, item)
+end
+
+# If practice, long texts may take too long to embed even with our tiny model
+# so let&#39;s not compare anything above 2000 tokens =~ 5000 characters (threshold of c. 100ms)
+
+hash_cache = HashCache()
+input = &quot;say hi&quot;
+input = &quot;say hi &quot;^1000
+
+active_cache = length(input) &gt; 5000 ? hash_cache : sem_cache
+item = active_cache(&quot;key1&quot;, input; verbose = 1)
+
+if !isvalid(item)
+    @info &quot;cache miss!&quot;
+    item.output = &quot;expensive result X&quot;
+    push!(active_cache, item)
+end</code></pre><h2 id="How-it-Works"><a class="docs-heading-anchor" href="#How-it-Works">How it Works</a><a id="How-it-Works-1"></a><a class="docs-heading-anchor-permalink" href="#How-it-Works" title="Permalink"></a></h2><p>The primary objective of building this package was to cache expensive API calls to GenAI models.</p><p>The system offers exact matching (faster, <code>HashCache</code>) and semantic similarity lookup (slower, <code>SemanticCache</code>) of STRING inputs. In addition, all requests are first compared on a “cache key”, which presents a key that must always match exactly for requests to be considered interchangeable (eg, same model, same provider, same temperature, etc).  You need to choose the appropriate cache key and input depending on your use case. This default choice for the cache key should be the model name.</p><p>What happens when you call the cache (provide <code>cache_key</code> and <code>string_input</code>)?</p><ul><li>All cached outputs are stored in a vector <code>cache.items</code>.</li><li>When we receive a request, the <code>cache_key</code> is looked up to find indices of the corresponding items in <code>items</code>. If <code>cache_key</code> is not found, we return <code>CachedItem</code> with an empty <code>output</code> field (ie, <code>isvalid(item) == false</code>).</li><li>We embed the <code>string_input</code> using a tiny BERT model and normalize the embeddings (to make it easier to compare the cosine distance later).</li><li>We then compare the cosine distance with the embeddings of the cached items.</li><li>If the cosine distance is higher than <code>min_similarity</code> threshold, we return the cached item (The output can be found in the field <code>item.output</code>).</li></ul><p>If we haven&#39;t found any cached item, we return <code>CachedItem</code> with an empty <code>output</code> field (ie, <code>isvalid(item) == false</code>). Once you calculate the response and save it in <code>item.output</code>, you can push the item to the cache by calling <code>push!(cache, item)</code>.</p><h2 id="Suitable-Use-Cases"><a class="docs-heading-anchor" href="#Suitable-Use-Cases">Suitable Use Cases</a><a id="Suitable-Use-Cases-1"></a><a class="docs-heading-anchor-permalink" href="#Suitable-Use-Cases" title="Permalink"></a></h2><ul><li>This package is great if you know you will have a smaller volume of requests (eg, &lt;10k per session or machine).</li><li>It’s ideal to reduce the costs of running your evals, because even when you change your RAG pipeline configuration many of the calls will be repeated and can take advantage of caching.</li><li>Lastly, this package can be really useful for demos and small user applications, where you can know some of the system inputs upfront, so you can cache them and show incredible response times!</li><li>This package is NOT suitable for production systems with hundreds of thousands of requests and remember that this is a very basic cache that you need to manually invalidate over time!</li></ul><h2 id="Advanced-Usage"><a class="docs-heading-anchor" href="#Advanced-Usage">Advanced Usage</a><a id="Advanced-Usage-1"></a><a class="docs-heading-anchor-permalink" href="#Advanced-Usage" title="Permalink"></a></h2><h3 id="Caching-HTTP-Requests"><a class="docs-heading-anchor" href="#Caching-HTTP-Requests">Caching HTTP Requests</a><a id="Caching-HTTP-Requests-1"></a><a class="docs-heading-anchor-permalink" href="#Caching-HTTP-Requests" title="Permalink"></a></h3><p>Based on your knowledge of the API calls made, you need determine the: 1) cache key (separate store of cached items, eg, different models or temperatures) and 2) how to unpack the HTTP request into a string (eg, unwrap and join the formatted message contents for OpenAI API).</p><p>Here&#39;s a brief outline of how you can use SemanticCaches.jl with <a href="https://github.com/svilupp/PromptingTools.jl">PromptingTools.jl</a>.</p><pre><code class="language-julia hljs">using PromptingTools
+using SemanticCaches
+using HTTP
+
+## Define the new caching mechanism as a layer for HTTP
+## See documentation [here](https://juliaweb.github.io/HTTP.jl/stable/client/#Quick-Examples)
+module MyCache
+
+using HTTP, JSON3
+using SemanticCaches
+
+const SEM_CACHE = SemanticCache()
+const HASH_CACHE = HashCache()
+
+function cache_layer(handler)
+    return function (req; cache_key::Union{AbstractString,Nothing}=nothing, kw...)
+        # only apply the cache layer if the user passed `cache_key`
+        # we could also use the contents of the payload, eg, `cache_key = get(body, &quot;model&quot;, &quot;unknown&quot;)`
+        if req.method == &quot;POST&quot; &amp;&amp; cache_key !== nothing
+            body = JSON3.read(copy(req.body))
+            if occursin(&quot;v1/chat/completions&quot;, req.target)
+                ## We&#39;re in chat completion endpoint
+                input = join([m[&quot;content&quot;] for m in body[&quot;messages&quot;]], &quot; &quot;)
+            elseif occursin(&quot;v1/embeddings&quot;, req.target)
+                ## We&#39;re in embedding endpoint
+                input = body[&quot;input&quot;]
+            else
+                ## Skip, unknown API
+                return handler(req; kw...)
+            end
+            ## Check the cache
+            @info &quot;Check if we can cache this request ($(length(input)) chars)&quot;
+            active_cache = length(input) &gt; 5000 ? HASH_CACHE : SEM_CACHE
+            item = active_cache(&quot;key1&quot;, input; verbose=2) # change verbosity to 0 to disable detailed logs
+            if !isvalid(item)
+                @info &quot;Cache miss! Pinging the API&quot;
+                # pass the request along to the next layer by calling `cache_layer` arg `handler`
+                resp = handler(req; kw...)
+                item.output = resp
+                # Let&#39;s remember it for the next time
+                push!(active_cache, item)
+            end
+            ## Return the calculated or cached result
+            return item.output
+        end
+        # pass the request along to the next layer by calling `cache_layer` arg `handler`
+        # also pass along the trailing keyword args `kw...`
+        return handler(req; kw...)
+    end
+end
+
+# Create a new client with the auth layer added
+HTTP.@client [cache_layer]
+
+end # module
+
+
+# Let&#39;s push the layer globally in all HTTP.jl requests
+HTTP.pushlayer!(MyCache.cache_layer)
+# HTTP.poplayer!() # to remove it later
+
+# Let&#39;s call the API
+@time msg = aigenerate(&quot;What is the meaning of life?&quot;; http_kwargs=(; cache_key=&quot;key1&quot;))
+
+# The first call will be slow as usual, but any subsequent call should be pretty quick - try it a few times!</code></pre><p>You can also use it for embeddings, eg, </p><pre><code class="language-julia hljs">@time msg = aiembed(&quot;how is it going?&quot;; http_kwargs=(; cache_key=&quot;key2&quot;)) # 0.7s
+@time msg = aiembed(&quot;how is it going?&quot;; http_kwargs=(; cache_key=&quot;key2&quot;)) # 0.02s
+
+# Even with a tiny difference (no question mark), it still picks the right cache
+@time msg = aiembed(&quot;how is it going&quot;; http_kwargs=(; cache_key=&quot;key2&quot;)) # 0.02s</code></pre><p>You can remove the cache layer by calling <code>HTTP.poplayer!()</code> (and add it again if you made some changes).</p><p>You can probe the cache by calling <code>MyCache.SEM_CACHE</code> (eg, <code>MyCache.SEM_CACHE.items[1]</code>).</p><h2 id="Frequently-Asked-Questions"><a class="docs-heading-anchor" href="#Frequently-Asked-Questions">Frequently Asked Questions</a><a id="Frequently-Asked-Questions-1"></a><a class="docs-heading-anchor-permalink" href="#Frequently-Asked-Questions" title="Permalink"></a></h2><p><strong>How is the performance?</strong></p><p>The majority of time will be spent in 1) tiny embeddings (for large texts, eg, thousands of tokens) and in calculating cosine similarity (for large caches, eg, over 10k items).</p><p>For reference, embedding smaller texts like questions to embed takes only a few milliseconds. Embedding 2000 tokens can take anywhere from 50-100ms.</p><p>When it comes to the caching system, there are many locks to avoid faults, but the overhead is still negligible - I ran experiments with 100k sequential insertions and the time per item was only a few milliseconds (dominated by the cosine similarity). If your bottleneck is in the cosine similarity calculation (c. 4ms for 100k items), consider moving vectors into a matrix for continuous memory and/or use Boolean embeddings with Hamming distance (XOR operator, c. order of magnitude speed up).</p><p>All in all, the system is faster than necessary for normal workloads with thousands of cached items. You’re more likely to have GC and memory problems if your payloads are big (consider swapping to disk) than to face compute bounds. Remember that the motivation is to prevent API calls that take anywhere between 1-20 seconds!</p><p><strong>How to measure the time it takes to do X?</strong></p><p>Have a look at the example snippets below - time whichever part of it you’re interested in.</p><pre><code class="language-julia hljs">
+sem_cache = SemanticCache()
+# First argument: the key must always match exactly, eg, model, temperature, etc
+# Second argument: the input text to be compared with the cache, can be fuzzy matched
+item = sem_cache(&quot;key1&quot;, &quot;say hi!&quot;; verbose = 1) # notice the verbose flag it can 0,1,2 for different level of detail
+if !isvalid(item)
+    @info &quot;cache miss!&quot;
+    item.output = &quot;expensive result X&quot;
+    # Save the result to the cache for future reference
+    push!(sem_cache, item)
+end</code></pre><p>Embedding only (to tune the <code>min_similarity</code> threshold or to time the embedding)</p><pre><code class="language-julia hljs">using SemanticCaches.FlashRank: embed
+using SemanticCaches: EMBEDDER
+
+@time res = embed(EMBEDDER, &quot;say hi&quot;)
+#   0.000903 seconds (104 allocations: 19.273 KiB)
+# see res.elapsed or res.embeddings
+
+# long inputs (split into several chunks and then combining the embeddings)
+@time embed(EMBEDDER, &quot;say hi &quot;^1000)
+#   0.032148 seconds (8.11 k allocations: 662.656 KiB)</code></pre><p><strong>How to set the <code>min_similarity</code> threshold?</strong></p><p>You can set the <code>min_similarity</code> threshold by adding the kwarg <code>active_cache(&quot;key1&quot;, input; verbose=2, min_similarity=0.95)</code>.</p><p>The default is 0.95, which is a very high threshold. For practical purposes, I&#39;d recommend ~0.9. If you&#39;re expecting some typos, you can go even a bit lower (eg, 0.85). Be careful though - it&#39;s hard to embed super short sequences well! You might want to adjust the threshold depending on the length of the input.</p><p>If you want to calculate the cosine similarity, remember to <code>normalize</code> the embeddings first or divide the dot product by the norms.</p><pre><code class="language-julia hljs">using SemanticCaches.LinearAlgebra: normalize, norm, dot
+cosine_similarity = dot(r1.embeddings, r2.embeddings) / (norm(r1.embeddings) * norm(r2.embeddings))
+# remember that 1 is the best similarity, -1 is the exact opposite</code></pre><p>You can compare different inputs to determine the best threshold for your use cases</p><pre><code class="language-julia hljs">emb1 = embed(EMBEDDER, &quot;How is it going?&quot;) |&gt; x -&gt; vec(x.embeddings) |&gt; normalize
+emb2 = embed(EMBEDDER, &quot;How is it goin&#39;?&quot;) |&gt; x -&gt; vec(x.embeddings) |&gt; normalize
+dot(emb1, emb2) # 0.944
+
+emb1 = embed(EMBEDDER, &quot;How is it going?&quot;) |&gt; x -&gt; vec(x.embeddings) |&gt; normalize
+emb2 = embed(EMBEDDER, &quot;How is it goin&#39;&quot;) |&gt; x -&gt; vec(x.embeddings) |&gt; normalize
+dot(emb1, emb2) # 0.920</code></pre><p><strong>How to debug it?</strong></p><p>Enable verbose logging by adding the kwarg <code>verbose = 2</code>, eg, <code>item = active_cache(&quot;key1&quot;, input; verbose=2)</code>.</p></article><nav class="docs-footer"><a class="docs-footer-nextpage" href="api_reference/">API Reference »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.5.0 on <span class="colophon-date" title="Sunday 30 June 2024 10:22">Sunday 30 June 2024</span>. Using Julia version 1.10.4.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
