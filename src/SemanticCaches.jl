@@ -1,5 +1,9 @@
 module SemanticCaches
 
+## Cowboy mode to solve CI failures in auto-merge
+## Always set download true if not set otherwise
+get!(ENV, "DATADEPS_ALWAYS_ACCEPT", "true")
+
 using HTTP
 using LinearAlgebra
 using Dates
