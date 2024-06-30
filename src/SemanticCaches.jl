@@ -25,7 +25,12 @@ function __init__()
     if haskey(ENV,"CI")
         ENV["DATADEPS_ALWAYS_ACCEPT"] = "true"
     end
-    EMBEDDER = EmbedderModel(:tiny_embed)
+    EMBEDDER = try
+        EmbedderModel(:tiny_embed)
+    catch e
+        # Probably a CI issue!
+        @warn "Error in DataDeps: $e"
+    end
 end
 
 end
