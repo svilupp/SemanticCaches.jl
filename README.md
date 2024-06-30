@@ -21,6 +21,7 @@ Pkg.add("https://github.com/svilupp/SemanticCaches.jl")
 ## Quick Start Guide
 
 ```julia
+ENV["DATADEPS_ALWAYS_ACCEPT"] = "true"
 using SemanticCaches
 
 sem_cache = SemanticCache()
