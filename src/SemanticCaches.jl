@@ -7,7 +7,7 @@ using Statistics: mean
 using FlashRank
 using FlashRank: EmbedderModel
 
-global EMBEDDER::EmbedderModel = EmbedderModel(:tiny_embed)
+global EMBEDDER::Union{Nothing,EmbedderModel} = nothing
 
 export SemanticCache, CachedItem, HashCache
 include("types.jl")
