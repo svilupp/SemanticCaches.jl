@@ -1,4 +1,4 @@
-# SemanticCaches 
+# SemanticCaches.jl
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://svilupp.github.io/SemanticCaches.jl/dev/) 
 [![Build Status](https://github.com/svilupp/SemanticCaches.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/svilupp/SemanticCaches.jl/actions/workflows/CI.yml?query=branch%3Amain) 
 [![Coverage](https://codecov.io/gh/svilupp/SemanticCaches.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/svilupp/SemanticCaches.jl) 
@@ -11,16 +11,18 @@ Note that we're using a tiny BERT model with a maximum chunk size of 512 tokens 
 For longer sentences, we split them in several chunks and consider their average embedding, but use it carefully! The latency can sky rocket and become worse than simply calling the original API.
 
 ## Installation
-To install SemanticCaches.jl, simply add this repository (package is not yet registered).
+To install SemanticCaches.jl, simply add the package using the Julia package manager:
 
 ```julia
-using Pkg
-Pkg.add("https://github.com/svilupp/SemanticCaches.jl")
+using Pkg;
+Pkg.activate(".")
+Pkg.add("SemanticCaches")
 ```
 
 ## Quick Start Guide
 
 ```julia
+## This line is very important to be able to download the models!!!
 ENV["DATADEPS_ALWAYS_ACCEPT"] = "true"
 using SemanticCaches
 

@@ -2,9 +2,9 @@
 CurrentModule = SemanticCaches
 ```
 
-# SemanticCaches
+# SemanticCaches.jl
 
-Documentation for [SemanticCaches](https://github.com/svilupp/SemanticCaches.jl).
+Documentation for [SemanticCaches.jl](https://github.com/svilupp/SemanticCaches.jl).
 
 SemanticCaches.jl is a very hacky implementation of a semantic cache for AI applications to save time and money with repeated requests.
 It's not particularly fast, because we're trying to prevent API calls that can take even 20 seconds.
@@ -13,16 +13,19 @@ Note that we're using a tiny BERT model with a maximum chunk size of 512 tokens 
 For longer sentences, we split them in several chunks and consider their average embedding, but use it carefully! The latency can sky rocket and become worse than simply calling the original API.
 
 ## Installation
-To install SemanticCaches.jl, simply add this repository (package is not yet registered).
+
+To install SemanticCaches.jl, simply add the package using the Julia package manager:
 
 ```julia
-using Pkg
-Pkg.add("https://github.com/svilupp/SemanticCaches.jl")
+using Pkg;
+Pkg.activate(".")
+Pkg.add("SemanticCaches")
 ```
 
 ## Quick Start Guide
 
 ```julia
+## This line is very important to be able to download the models!!!
 ENV["DATADEPS_ALWAYS_ACCEPT"] = "true"
 using SemanticCaches
 
