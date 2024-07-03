@@ -2,9 +2,9 @@
 CurrentModule = SemanticCaches
 ```
 
-# SemanticCaches
+# SemanticCaches.jl
 
-Documentation for [SemanticCaches](https://github.com/svilupp/SemanticCaches.jl).
+Documentation for [SemanticCaches.jl](https://github.com/svilupp/SemanticCaches.jl).
 
 SemanticCaches.jl is a very hacky implementation of a semantic cache for AI applications to save time and money with repeated requests.
 It's not particularly fast, because we're trying to prevent API calls that can take even 20 seconds.

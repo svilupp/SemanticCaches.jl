@@ -1,4 +1,4 @@
-# SemanticCaches 
+# SemanticCaches.jl
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://svilupp.github.io/SemanticCaches.jl/dev/) 
 [![Build Status](https://github.com/svilupp/SemanticCaches.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/svilupp/SemanticCaches.jl/actions/workflows/CI.yml?query=branch%3Amain) 
 [![Coverage](https://codecov.io/gh/svilupp/SemanticCaches.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/svilupp/SemanticCaches.jl) 
